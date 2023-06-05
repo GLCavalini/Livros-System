@@ -44,9 +44,9 @@ while options != 5:
             else:
                 print("O livro não foi encontrado na biblioteca.")
                 masterMenu()
-
         case 4:
-            ...
+            Livro.gerador_relatorio()
+            masterMenu()
         case 5:
             print('')
             break

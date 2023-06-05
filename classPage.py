@@ -1,6 +1,7 @@
 import json
 from dataclasses import dataclass
 from labelsFunctions import returnPositiveMessage
+import csv
 
 biblioteca = []
 caminhoArquivo = "livros.json"
@@ -57,3 +58,20 @@ class Livro:
                     except Exception as error:
                         print(error)
                 return
+    @staticmethod
+    def gerador_relatorio():
+        with open(caminhoArquivo, "r", encoding="utf-8") as arquivo_json:
+            livrosJson = json.load(arquivo_json)
+            nome_arquivo_csv = "relatorio.csv"
+
+            with open(nome_arquivo_csv, "w", encoding="utf8", newline="") as arquivo_csv:
+                columns = livrosJson[0].keys()
+                writer = csv.writer(arquivo_csv, delimiter=";")
+
+                writer.writerow(columns)
+
+                for livro in livrosJson:
+                    writer.writerow(livro.values())
+        
+        print("Relatório CSV gerado com sucesso!")
+
