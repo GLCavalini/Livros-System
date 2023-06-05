@@ -1,14 +1,8 @@
 [
     {
-        "nome": "gian",
-        "autor": "lucca",
-        "anoLancamento": 1995,
+        "nome": "Para todos os garotos que amei",
+        "autor": "Anne lee",
+        "anoLancamento": 2007,
         "disponivel": true
-    },
-    {
-        "nome": "joao",
-        "autor": "marco",
-        "anoLancamento": 1995,
-        "disponivel": false
     }
 ]

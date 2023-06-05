@@ -33,7 +33,18 @@ while options != 5:
             Livro.ler_livros()
             masterMenu()
         case 3:
-            ...
+            nome = input("Digite o nome do livro que deseja editar: ")
+            if Livro.verificar_livro_existente(nome):
+                novo_nome = input("Digite o novo nome do livro: ")
+                novo_autor = input("Digite o novo nome do autor: ")
+                novo_ano = int(input("Digite o novo ano de lançamento: "))
+                nova_disponibilidade = input("Digite a nova disponibilidade! (Digite True ou False): ").lower() == "true"
+                Livro.editar_livro(nome, novo_nome, novo_autor, novo_ano, nova_disponibilidade)
+                masterMenu()
+            else:
+                print("O livro não foi encontrado na biblioteca.")
+                masterMenu()
+
         case 4:
             ...
         case 5:

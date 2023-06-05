@@ -16,12 +16,19 @@ class Livro:
     def criar_livro(nome, autor, ano, disponivel):
         livro = Livro(nome, autor, ano, disponivel)
         biblioteca.append(livro)
-        returnPositiveMessage()
+        returnPositiveMessage(True)
         with open(caminhoArquivo, "w+", encoding="utf8") as arquivo:
             try:
                arquivo.write(json.dumps([livro.__dict__ for livro in biblioteca], indent=4))
             except Exception as error:
                 print(error)
+
+    @staticmethod
+    def verificar_livro_existente(nome):
+        for livro in biblioteca:
+            if livro.nome == nome:
+                return True
+        return False
         
     @staticmethod
     def ler_livros():
@@ -33,4 +40,20 @@ class Livro:
                 print("Disponibilidade de compra: ", livro.disponivel)
                 print("")
         else:
-            ("Não temos livros cadastrados no momento!")      
+            ("Não temos livros cadastrados no momento!")
+
+    @staticmethod
+    def editar_livro(nome, novo_nome, novo_autor, novo_ano, nova_disponibilidade):
+        for livro in biblioteca:
+            if livro.nome == nome:
+                livro.nome = novo_nome
+                livro.autor = novo_autor
+                livro.anoLancamento = novo_ano
+                livro.disponivel = nova_disponibilidade
+                returnPositiveMessage()
+                with open(caminhoArquivo, "w+", encoding="utf8") as arquivo:
+                    try:
+                        arquivo.write(json.dumps([livro.__dict__ for livro in biblioteca], indent=4))
+                    except Exception as error:
+                        print(error)
+                return

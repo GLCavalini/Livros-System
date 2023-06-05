@@ -24,6 +24,10 @@ def masterMenu(bool=False):
         ''')
          
 
-def returnPositiveMessage():
-    print("")
-    print("Livro cadastrado com sucesso na Libery-Cady!  ")
+def returnPositiveMessage(bool=False):
+    if (bool == True):
+        print("")
+        print("Livro cadastrado com sucesso na Libery-Cady!  ")
+    else:
+        print("")
+        print("Edição concluida com sucesso! Volte ao menu principal e verifique suas mudanças!  ")
