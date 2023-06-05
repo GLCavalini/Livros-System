@@ -1,10 +1,9 @@
 from labelsFunctions import masterMenu
 
-from classPage import criar_livro, salvar_livros
+from classPage import Livro
 
 options = 0
-biblioteca = []
-masterMenu()
+masterMenu(True)
 
 
 while options != 5:
@@ -14,7 +13,7 @@ while options != 5:
             raise ValueError
     except ValueError:
         print('')
-        print("Por favor, digite um número inteiro válido entre 1 e 6!")
+        print("Por favor, digite um número inteiro válido entre 1 e 5!")
         continue
 
     #VALIDATIONS
@@ -24,11 +23,15 @@ while options != 5:
             autor = input("Digite o nome do autor: ")
             ano = int(input("Digite o ano de lançamento: "))
             disponivel = input("O livro está disponível? (Digite True ou False): ").lower() == "true"
-
-            livro = criar_livro(nome, autor, ano, disponivel)
-            biblioteca.append(livro)
+            
+            if (nome, autor, ano, disponivel != ''):
+                Livro.criar_livro(nome, autor, ano, disponivel)
+                masterMenu()
+            else:
+                print("Preencha todos os campos para a criação de um livro.")
         case 2:
-            ...
+            Livro.ler_livros()
+            masterMenu()
         case 3:
             ...
         case 4:
@@ -36,10 +39,6 @@ while options != 5:
         case 5:
             print('')
             break
-
-# Salvar a biblioteca em um arquivo
-caminho_arquivo = "livros.json"
-salvar_livros(biblioteca, caminho_arquivo)
 
 print("Obrigado por usar a Libery-Cadi! ")
 print('')

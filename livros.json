@@ -1,1 +1,14 @@
-[{"nome": "gian", "autor": "gian", "anoLancamento": 1995, "disponivel": true}]
+[
+    {
+        "nome": "gian",
+        "autor": "lucca",
+        "anoLancamento": 1995,
+        "disponivel": true
+    },
+    {
+        "nome": "joao",
+        "autor": "marco",
+        "anoLancamento": 1995,
+        "disponivel": false
+    }
+]
